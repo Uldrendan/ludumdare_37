@@ -24,6 +24,11 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	void Update () {
+		HandleTimer ();
+		CheckClick ();
+	}
+
+	void HandleTimer () {
 		timer += Time.deltaTime;
 		if (timer >= 5)
 		{
@@ -37,8 +42,6 @@ public class GameMaster : MonoBehaviour {
 			timer = 0;
 			Debug.Log(currentDay + "    " + currentTime + ":00");
 		}
-
-		CheckClick();
 	}
 
 	void CheckClick () {
@@ -47,7 +50,14 @@ public class GameMaster : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			if (Physics.Raycast (ray, out hit, 1000f)) {
 				Debug.Log ("Clicked " + hit.collider.gameObject.name);
-				Interactable interactable = hit.collider.gameObject.GetComponent<Interactable> ();
+				Transform obj = hit.collider.transform;
+				Interactable interactable = obj.GetComponent<Interactable> ();
+				while (interactable == null && obj.transform.parent != null) {
+					obj = obj.transform.parent;
+					Debug.Log ("Checking parent " + obj.name + " for Interactable");
+					interactable = obj.GetComponent<Interactable> ();
+				}
+
 				if (interactable != null) {
 					Debug.Log ("Interactable");
 					interactable.OnClick ();
