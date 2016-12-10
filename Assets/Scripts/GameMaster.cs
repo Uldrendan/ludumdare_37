@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMaster : MonoBehaviour {
-
+public class GameMaster : MonoBehaviour
+{
 	public static GameMaster instance;
 
 	public float energy = 100;
 	public float hygiene = 100;
 	public float hunger = 100;
 	public float bathroom = 100;
+
+	public float progress;
 
 	public int currentDay;
 	public int currentTime;
@@ -40,7 +42,6 @@ public class GameMaster : MonoBehaviour {
 				currentTime = 0;
 			}
 			timer = 0;
-			Debug.Log(currentDay + "    " + currentTime + ":00");
 		}
 	}
 

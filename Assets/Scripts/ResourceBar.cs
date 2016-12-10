@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class ResourceBar : MonoBehaviour
 {
-	public enum Resource { Hygiene, Hunger, Energy, Bathroom };
+	public enum Resource { Hygiene, Hunger, Energy, Bathroom, Progress};
 	public Resource resource;
 
 	Image image;
-
-	public GameObject resourceFrame;
 
 	void Start()
 	{
@@ -32,6 +30,9 @@ public class ResourceBar : MonoBehaviour
 				break;
 			case 3:
 				image.fillAmount = GameMaster.instance.bathroom / 100;
+				break;
+			case 4:
+				image.fillAmount = GameMaster.instance.progress / 100;
 				break;
 		}
 	}
