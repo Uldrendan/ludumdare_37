@@ -8,7 +8,8 @@ public class GameMaster : MonoBehaviour {
 
 	public float energy = 100;
 	public float hygiene = 100;
-	public float food = 100;
+	public float hunger = 100;
+	public float bathroom = 100;
 
 	void Start () {
 		if (instance != null)

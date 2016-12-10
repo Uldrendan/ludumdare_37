@@ -679,7 +679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energy: 100
   hygiene: 100
-  food: 100
+  hunger: 100
+  bathroom: 100
 --- !u!4 &780153758
 Transform:
   m_ObjectHideFlags: 0
@@ -872,8 +873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6b23d2156e94aa5a0aa205b0e38af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resource: 0
   resourceFrame: {fileID: 236506431}
-  pulseColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!114 &1225006634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,8 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6b23d2156e94aa5a0aa205b0e38af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resource: 2
   resourceFrame: {fileID: 20585244}
-  pulseColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!114 &1228828718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,8 +1111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6b23d2156e94aa5a0aa205b0e38af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resource: 3
   resourceFrame: {fileID: 380852372}
-  pulseColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!114 &1318618544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,8 +1298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6b23d2156e94aa5a0aa205b0e38af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resource: 1
   resourceFrame: {fileID: 964299362}
-  pulseColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!114 &1964394940
 MonoBehaviour:
   m_ObjectHideFlags: 0

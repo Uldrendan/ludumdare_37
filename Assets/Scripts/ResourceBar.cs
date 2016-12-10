@@ -1,61 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Reflection;
 using UnityEngine.UI;
 
 public class ResourceBar : MonoBehaviour
 {
+	public enum Resource { Hygiene, Hunger, Energy, Bathroom };
+	public Resource resource;
 
 	Image image;
 
 	public GameObject resourceFrame;
 
-	bool lowResource = false;
-
-	public Color pulseColor;
-	Color targetColor;
-
 	void Start()
 	{
-		targetColor = pulseColor;
 		image = GetComponent<Image>();
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
-		image.fillAmount = GameMaster.instance.energy / 100; //need to make this flexible for other resource types
-
-		if (GameMaster.instance.energy <= 20)
-			lowResource = true;
-		else
-			lowResource = false;
-
-		if (lowResource)
+		switch ((int)resource)
 		{
-			Pulse();
+			case 0:
+				image.fillAmount = GameMaster.instance.hygiene / 100;
+				break;
+			case 1:
+				image.fillAmount = GameMaster.instance.hunger / 100;
+				break;
+			case 2:
+				image.fillAmount = GameMaster.instance.energy / 100;
+				break;
+			case 3:
+				image.fillAmount = GameMaster.instance.bathroom / 100;
+				break;
 		}
-		else if (GetComponent<Image>().color != Color.white)
-		{
-			ResetColor();
-		}
-	}
-
-	void Pulse()
-	{
-		GetComponent<Image>().color = Color.Lerp(GetComponent<Image>().color, targetColor, 20 * Time.deltaTime);
-		resourceFrame.GetComponent<Image>().color = Color.Lerp(GetComponent<Image>().color, targetColor, 20 * Time.deltaTime);
-
-		if (GetComponent<Image>().color == targetColor)
-		{
-			if (targetColor == pulseColor)
-				targetColor = Color.white;
-			else
-				targetColor = pulseColor;
-		}
-	}
-
-	public void ResetColor()
-	{
-		GetComponent<Image>().color = Color.white;
-		resourceFrame.GetComponent<Image>().color = Color.white;
 	}
 }
