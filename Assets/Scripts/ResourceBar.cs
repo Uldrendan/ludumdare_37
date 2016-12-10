@@ -17,7 +17,7 @@ public class ResourceBar : MonoBehaviour
 	void Start()
 	{
 		targetColor = pulseColor;
-		image = this.GetComponent<Image>();
+		image = GetComponent<Image>();
 	}
 
 	void FixedUpdate()
@@ -33,7 +33,7 @@ public class ResourceBar : MonoBehaviour
 		{
 			Pulse();
 		}
-		else if (this.GetComponent<Image>().color != Color.white)
+		else if (GetComponent<Image>().color != Color.white)
 		{
 			ResetColor();
 		}
@@ -41,10 +41,10 @@ public class ResourceBar : MonoBehaviour
 
 	void Pulse()
 	{
-		this.GetComponent<Image>().color = Color.Lerp(this.GetComponent<Image>().color, targetColor, 20 * Time.deltaTime);
-		resourceFrame.GetComponent<Image>().color = Color.Lerp(this.GetComponent<Image>().color, targetColor, 20 * Time.deltaTime);
+		GetComponent<Image>().color = Color.Lerp(GetComponent<Image>().color, targetColor, 20 * Time.deltaTime);
+		resourceFrame.GetComponent<Image>().color = Color.Lerp(GetComponent<Image>().color, targetColor, 20 * Time.deltaTime);
 
-		if (this.GetComponent<Image>().color == targetColor)
+		if (GetComponent<Image>().color == targetColor)
 		{
 			if (targetColor == pulseColor)
 				targetColor = Color.white;
@@ -55,7 +55,7 @@ public class ResourceBar : MonoBehaviour
 
 	public void ResetColor()
 	{
-		this.GetComponent<Image>().color = Color.white;
+		GetComponent<Image>().color = Color.white;
 		resourceFrame.GetComponent<Image>().color = Color.white;
 	}
 }
