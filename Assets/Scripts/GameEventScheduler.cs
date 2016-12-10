@@ -16,7 +16,7 @@ public class GameEventScheduler : MonoBehaviour {
 	void Start () {
 
 		if (instance != null)
-			GameObject.Destroy(instance);
+			Destroy(instance);
 		else
 			instance = this;
 
