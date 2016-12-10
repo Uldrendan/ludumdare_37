@@ -6,13 +6,14 @@ public class GameMaster : MonoBehaviour {
 
 	public static GameMaster instance;
 
-	public int energy = 100;
-	public int hygiene = 100;
-	public int food = 100;
+	public float energy = 100;
+	public float hygiene = 100;
+	public float hunger = 100;
+	public float bathroom = 100;
 
 	void Start () {
 		if (instance != null)
-			GameObject.Destroy(instance);
+			Destroy(instance);
 		else
 			instance = this;
 	}
