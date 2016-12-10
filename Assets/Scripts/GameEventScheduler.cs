@@ -22,8 +22,6 @@ public class GameEventScheduler : MonoBehaviour {
 
 		ScheduledEvents = new List<GameEvent> ();
 		CurrentEvents = new List<GameEvent> ();
-		ScheduleGameEvent (new TestEvent (TimeSpan.FromSeconds (5), TimeSpan.FromSeconds(5)));
-		ScheduleGameEvent (new TestEvent (TimeSpan.FromSeconds (15), TimeSpan.Zero));
 	}
 	
 	// Update is called once per frame

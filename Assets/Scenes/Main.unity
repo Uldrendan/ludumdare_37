@@ -332,6 +332,62 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 68860544}
+--- !u!1 &101361893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 101361896}
+  - component: {fileID: 101361895}
+  - component: {fileID: 101361894}
+  m_Layer: 0
+  m_Name: _GES
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &101361894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 101361893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab03ea4ad62ff54fa3aa6a275e32487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScheduledEvents: []
+  CurrentEvents: []
+--- !u!114 &101361895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 101361893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab03ea4ad62ff54fa3aa6a275e32487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScheduledEvents: []
+  CurrentEvents: []
+--- !u!4 &101361896
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 101361893}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.061612517, y: 1.8153586, z: -2.5782719}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &119607952
 Prefab:
   m_ObjectHideFlags: 0
@@ -1057,7 +1113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '"Hygeine"'
+  m_Text: '"Hygiene"'
 --- !u!222 &1274813375
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1190,7 +1246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733885829}
   m_Layer: 5
-  m_Name: Hygeine
+  m_Name: Hygiene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
