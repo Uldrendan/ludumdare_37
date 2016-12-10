@@ -27,12 +27,15 @@ public class GameMaster : MonoBehaviour {
 		timer += Time.deltaTime;
 		if (timer >= 5)
 		{
-			if (currentTime == 23)
+			if (currentTime < 23)
+				currentTime += 1;
+			else
 			{
 				currentDay += 1;
 				currentTime = 0;
 			}
-			currentTime += 1;
+			timer = 0;
+			Debug.Log(currentDay + "    " + currentTime + ":00");
 		}
 
 		CheckClick();
