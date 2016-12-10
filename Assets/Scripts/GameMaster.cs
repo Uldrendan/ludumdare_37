@@ -11,6 +11,11 @@ public class GameMaster : MonoBehaviour {
 	public float hunger = 100;
 	public float bathroom = 100;
 
+	public int currentDay;
+	public int currentTime;
+
+	float timer;
+
 	void Start () {
 		if (instance != null)
 			Destroy(instance);
@@ -18,9 +23,19 @@ public class GameMaster : MonoBehaviour {
 			instance = this;
 	}
 
-	// Update is called once per frame
 	void Update () {
-		CheckClick ();
+		timer += Time.deltaTime;
+		if (timer >= 5)
+		{
+			if (currentTime == 23)
+			{
+				currentDay += 1;
+				currentTime = 0;
+			}
+			currentTime += 1;
+		}
+
+		CheckClick();
 	}
 
 	void CheckClick () {
