@@ -5,9 +5,7 @@ using UnityEngine.UI;
 public class ResourceBar : MonoBehaviour
 {
 
-	RectTransform rekt;
-
-	float originalSizeX;
+	Image image;
 
 	public GameObject resourceFrame;
 
@@ -19,13 +17,12 @@ public class ResourceBar : MonoBehaviour
 	void Start()
 	{
 		targetColor = pulseColor;
-		rekt = this.GetComponent<RectTransform>();
-		originalSizeX = rekt.sizeDelta.x;
+		image = this.GetComponent<Image>();
 	}
 
 	void FixedUpdate()
 	{
-		rekt.sizeDelta = new Vector2(originalSizeX * (GameMaster.instance.energy / 100), rekt.sizeDelta.y); //need to make this flexible for other resource types
+		image.fillAmount = GameMaster.instance.energy / 100; //need to make this flexible for other resource types
 
 		if (GameMaster.instance.energy <= 20)
 			lowResource = true;

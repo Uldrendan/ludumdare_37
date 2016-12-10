@@ -6,9 +6,9 @@ public class GameMaster : MonoBehaviour {
 
 	public static GameMaster instance;
 
-	public int energy = 100;
-	public int hygiene = 100;
-	public int food = 100;
+	public float energy = 100;
+	public float hygiene = 100;
+	public float food = 100;
 
 	void Start () {
 		if (instance != null)
