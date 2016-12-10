@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Desk
+  - Bed
+  - Fridge
+  - Microwave
+  - Washroom
+  - Door
+  - Kitten
+  - Light
+  - Trash
   layers:
   - Default
   - TransparentFX
