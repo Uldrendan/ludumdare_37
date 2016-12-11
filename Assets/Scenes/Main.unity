@@ -352,7 +352,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1651372952330890, guid: 95ea68f2a61448c46a27a20dfa9340e4,
     type: 2}
   m_PrefabInternal: {fileID: 1553166153}
---- !u!114 &527403771
+--- !u!114 &527403775
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -469,12 +469,12 @@ Prefab:
     - target: {fileID: 224214253079279830, guid: 30f04587ceb6943c2a57d4ce408a4d50,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 141.00003
+      value: 134.99998
       objectReference: {fileID: 0}
     - target: {fileID: 224214253079279830, guid: 30f04587ceb6943c2a57d4ce408a4d50,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -62.770004
+      value: -68.3
       objectReference: {fileID: 0}
     - target: {fileID: 224214253079279830, guid: 30f04587ceb6943c2a57d4ce408a4d50,
         type: 2}
@@ -484,7 +484,7 @@ Prefab:
     - target: {fileID: 224214253079279830, guid: 30f04587ceb6943c2a57d4ce408a4d50,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 93
+      value: 136.6
       objectReference: {fileID: 0}
     - target: {fileID: 224214253079279830, guid: 30f04587ceb6943c2a57d4ce408a4d50,
         type: 2}
@@ -1270,7 +1270,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 527403771}
+      objectReference: {fileID: 527403775}
     - target: {fileID: 114504741266848522, guid: 95ea68f2a61448c46a27a20dfa9340e4,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
