@@ -34,6 +34,7 @@ public class GameMaster : MonoBehaviour
 	public GameObject currentContext;
 
 	float timer;
+	bool paused; //to pause the update loop functions (for game over or possible pause menu)
 
 	public string currentActivity;
 
@@ -50,38 +51,43 @@ public class GameMaster : MonoBehaviour
 
 	void Update()
 	{
-		energy -= Time.deltaTime;
-		hygiene -= Time.deltaTime;
-		hunger -= Time.deltaTime;
-		bathroom -= Time.deltaTime;
-
-		if (currentActivity == "Play")
+		if (!paused)
 		{
-			progress += Time.deltaTime;
-			Chara.GetComponent<Character>().Play();
-		}
-		if (currentActivity == "Work")
-		{
-			money += Time.deltaTime;
-			Chara.GetComponent<Character>().Work();
-		}
+			energy -= Time.deltaTime;
+			hygiene -= Time.deltaTime;
+			hunger -= Time.deltaTime;
+			bathroom -= Time.deltaTime;
 
-		if (progress >= 100)
-		{
-			Time.timeScale = 0;
-			GameMessage.instance.gameObject.SetActive(true);
-			GameMessage.instance.PostGameMessage("You win!", true);
-		}
+			if (currentActivity == "Play")
+			{
+				progress += Time.deltaTime;
+				Chara.GetComponent<Character>().Play();
+			}
+			if (currentActivity == "Work")
+			{
+				money += Time.deltaTime;
+				Chara.GetComponent<Character>().Work();
+			}
 
-		if (energy <= 0 || hygiene <= 0 || hunger <= 0 || bathroom <= 0)
-		{
-			Time.timeScale = 0;
-			GameMessage.instance.gameObject.SetActive(true);
-			GameMessage.instance.PostGameMessage("You lose...", true);
-		}
+			if (progress >= 100)
+			{
+				paused = true;
+				Time.timeScale = 0;
+				GameMessage.instance.gameObject.SetActive(true);
+				GameMessage.instance.PostGameMessage("You win!", true);
+			}
 
-		HandleTimer();
-		CheckClick();
+			if (energy <= 0 || hygiene <= 0 || hunger <= 0 || bathroom <= 0)
+			{
+				paused = true;
+				Time.timeScale = 0;
+				GameMessage.instance.gameObject.SetActive(true);
+				GameMessage.instance.PostGameMessage("You lose...", true);
+			}
+
+			HandleTimer();
+			CheckClick();
+		}
 	}
 
 	void HandleTimer () {
