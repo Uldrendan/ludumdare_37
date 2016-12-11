@@ -50,3 +50,26 @@ public class ColdPizzaProduct : Product {
 
 	}
 }
+
+public class EnergyDrinkProduct : Product {
+	public EnergyDrinkProduct () {
+		Name = "Energy Drink";
+		Description = "Helps you stay awake!";
+		Cost = 20;
+		Icon = Resources.Load ("salad_icon") as Sprite;
+	}
+
+	public override void OnUse () {
+		
+	}
+}
+
+public class ProductStock : ScriptableObject {
+	public int Num;
+	public Product Product;
+
+	public ProductStock(Product product, int num) {
+		Product = product;
+		Num = num;
+	}
+}

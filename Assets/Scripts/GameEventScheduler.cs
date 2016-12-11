@@ -73,9 +73,13 @@ public class GameEventScheduler : MonoBehaviour {
 		}
 	}
 
-	void ScheduleGameEvent(GameEvent ge) {
+	public void ScheduleGameEvent(GameEvent ge) {
 		ScheduledEvents.Add (ge);
 		ScheduledEvents.Sort ((ge1, ge2) => ge1.StartTime.CompareTo (ge2.StartTime));
+	}
+
+	public void CancelGameEvent(GameEvent ge) {
+		ScheduledEvents.FirstOrDefault ((x) => x.GetType() == ge.GetType());
 	}
 }
 
@@ -119,5 +123,20 @@ public class TestEvent : GameEvent {
 	}
 	public override void Exit() {
 		Debug.Log ("You died, ya bish");
+	}
+}
+
+public class OrderDeliveryEvent : GameEvent {
+	public OrderDeliveryEvent () : base () {}
+	//Delivery events are always instantaneous;
+	public OrderDeliveryEvent (DateTime startTime) : base (startTime,startTime) {}
+	public OrderDeliveryEvent (TimeSpan timeUntilEvent) : base (timeUntilEvent, TimeSpan.Zero) {}
+
+	public override void Enter () {
+
+	}
+
+	public override void Exit () {
+
 	}
 }
