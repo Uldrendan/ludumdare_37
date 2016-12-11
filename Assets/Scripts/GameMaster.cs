@@ -90,12 +90,25 @@ public class GameMaster : MonoBehaviour
 		}
 	}
 
-	int GetStock(Product product) {
+	public int GetStock(Product product) {
 		ProductStock match = Inventory.Find ((x) => x.Product.GetType () == product.GetType ());
 		if (match != null) {
 			return match.Num;
 		} else {
 			return 0;
+		}
+	}
+
+	public void UseProduct(Product product) {
+		ProductStock match = Inventory.Find ((x) => x.Product.GetType () == product.GetType ());
+		if (match != null && match.Num > 0) {
+			match.Product.OnUse ();
+			match.Num--;
+			if (match.Num == 0) {
+				Inventory.Remove (match);
+			}
+		} else {
+			Debug.LogError ("Shouldnt be able to use if you dont have any");
 		}
 	}
 
