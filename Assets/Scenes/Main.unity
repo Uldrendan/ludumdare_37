@@ -508,12 +508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d154328e4751441fd86831cf575fdfd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energy: 100
-  hygiene: 100
-  hunger: 100
-  bathroom: 100
-  progress: 0
-  money: 50
   currentDay: 0
   currentTime: 0
   currentContext: {fileID: 0}

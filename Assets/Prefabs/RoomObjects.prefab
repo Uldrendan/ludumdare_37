@@ -113,8 +113,9 @@ GameObject:
   - component: {fileID: 222829863619445654}
   - component: {fileID: 114519278590346098}
   - component: {fileID: 114298985986420088}
+  - component: {fileID: 114262543836831166}
   m_Layer: 0
-  m_Name: Button (1)
+  m_Name: Brush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,8 +319,9 @@ GameObject:
   - component: {fileID: 222655050721486412}
   - component: {fileID: 114473900107839322}
   - component: {fileID: 114378487309758722}
+  - component: {fileID: 114333915229601580}
   m_Layer: 0
-  m_Name: Button (2)
+  m_Name: Shower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -874,8 +876,9 @@ GameObject:
   - component: {fileID: 222256767667127386}
   - component: {fileID: 114522850169328004}
   - component: {fileID: 114282465086772424}
+  - component: {fileID: 114105845864589854}
   m_Layer: 0
-  m_Name: Button
+  m_Name: Toilet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2813,6 +2816,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114105845864589854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877469480799990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460aad473ab6d4e78a77e72ea275e4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114111204105358982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2952,6 +2966,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114262543836831166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076153493872766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460aad473ab6d4e78a77e72ea275e4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114282465086772424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2990,7 +3015,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114522850169328004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114105845864589854}
+        m_MethodName: BathroomFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114298985986420088
@@ -3031,7 +3067,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114519278590346098}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114262543836831166}
+        m_MethodName: BathroomFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114319876951753976
@@ -3055,6 +3102,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114333915229601580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1331124883603180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460aad473ab6d4e78a77e72ea275e4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114358124334431198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3126,7 +3184,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114473900107839322}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114333915229601580}
+        m_MethodName: BathroomFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114431716382812670

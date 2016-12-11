@@ -6,6 +6,6 @@ using UnityEngine.UI;
 public class MoneyDisplay : MonoBehaviour {
 
 	void Update () {
-		GetComponent<Text>().text = "$" + GameMaster.instance.money.ToString("0.00");
+		GetComponent<Text>().text = "$" + GameMaster.instance.Money.ToString("0.00");
 	}
 }
