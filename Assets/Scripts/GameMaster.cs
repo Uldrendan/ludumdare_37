@@ -6,14 +6,25 @@ public class GameMaster : MonoBehaviour
 {
 	public static GameMaster instance;
 
-	public float energy = 100;
-	public float hygiene = 100;
-	public float hunger = 100;
-	public float bathroom = 100;
-	public float progress;
-	public float money = 50;
+	float energy = 100;
+	public float Energy{ get { return energy; } set { energy = Mathf.Clamp(value, 0, 100); } }
 
-	public int currentDay;
+	float hygiene = 100;
+	public float Hygiene { get { return hygiene; } set { hygiene = Mathf.Clamp(value, 0, 100); } }
+
+	float hunger = 100;
+	public float Hunger { get { return hunger; } set { hunger = Mathf.Clamp(value, 0, 100); } }
+
+	float bathroom = 100;
+	public float Bathroom { get { return bathroom; } set { bathroom = Mathf.Clamp(value, 0, 100); } }
+
+	float progress;
+	public float Progress { get { return progress; } set { progress = Mathf.Clamp(value, 0, 100); } }
+
+	float money = 50;
+	public float Money { get { return money; } set { money = Mathf.Max(value, 0); } }
+
+	public int currentDay = 1;
 	public int currentTime;
 
 	public GameObject currentContext;
@@ -30,6 +41,11 @@ public class GameMaster : MonoBehaviour
 	}
 
 	void Update () {
+		energy -= Time.deltaTime;
+		hygiene -= Time.deltaTime;
+		hunger -= Time.deltaTime;
+		bathroom -= Time.deltaTime;
+
 		if (currentActivity == "Play")
 			progress += Time.deltaTime;
 		if (currentActivity == "Work")

@@ -20,19 +20,19 @@ public class ResourceBar : MonoBehaviour
 		switch ((int)resource)
 		{
 			case 0:
-				image.fillAmount = GameMaster.instance.hygiene / 100;
+				image.fillAmount = GameMaster.instance.Hygiene / 100;
 				break;
 			case 1:
-				image.fillAmount = GameMaster.instance.hunger / 100;
+				image.fillAmount = GameMaster.instance.Hunger / 100;
 				break;
 			case 2:
-				image.fillAmount = GameMaster.instance.energy / 100;
+				image.fillAmount = GameMaster.instance.Energy / 100;
 				break;
 			case 3:
-				image.fillAmount = GameMaster.instance.bathroom / 100;
+				image.fillAmount = GameMaster.instance.Bathroom / 100;
 				break;
 			case 4:
-				image.fillAmount = GameMaster.instance.progress / 100;
+				image.fillAmount = GameMaster.instance.Progress / 100;
 				break;
 		}
 	}
