@@ -31,10 +31,10 @@ public class ShopManager : MonoBehaviour {
 		_costText = CartCost.GetComponent<Text> ();
 		Stock = new List<ShopItem> ();
 		CurrentOrder = new List<ProductStock> ();
-		AddProduct (new SaladProduct ());
-		AddProduct (new ColdPizzaProduct ());
-		AddProduct (new HotPocketsProduct ());
-		AddProduct (new EnergyDrinkProduct ());
+		AddProduct (SaladProduct.CreateInstance<SaladProduct>());
+		AddProduct (ColdPizzaProduct.CreateInstance<ColdPizzaProduct>());
+		AddProduct (HotPocketsProduct.CreateInstance<HotPocketsProduct>());
+		AddProduct (EnergyDrinkProduct.CreateInstance<EnergyDrinkProduct>());
 	}
 
 	void Update () {
