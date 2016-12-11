@@ -10,8 +10,8 @@ public class GameMaster : MonoBehaviour
 	public float hygiene = 100;
 	public float hunger = 100;
 	public float bathroom = 100;
-
 	public float progress;
+	public float money = 50;
 
 	public int currentDay;
 	public int currentTime;
@@ -19,6 +19,8 @@ public class GameMaster : MonoBehaviour
 	public GameObject currentContext;
 
 	float timer;
+
+	public string currentActivity;
 
 	void Start () {
 		if (instance != null)
@@ -28,6 +30,12 @@ public class GameMaster : MonoBehaviour
 	}
 
 	void Update () {
+		if (currentActivity == "Play")
+			progress += Time.deltaTime;
+		if (currentActivity == "Work")
+			money += Time.deltaTime;
+			
+
 		HandleTimer ();
 		CheckClick ();
 	}
