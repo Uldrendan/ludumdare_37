@@ -76,6 +76,15 @@ public class GameMaster : MonoBehaviour
 		}
 	}
 
+	void GetStock(Product product) {
+		ProductStock match = Inventory.Find ((x) => x.Product.GetType () == product.GetType ());
+		if (match != null) {
+			return match.Num;
+		} else {
+			return 0;
+		}
+	}
+
 	void CheckClick () {
 		if (Input.GetMouseButtonDown (0)) {
 			if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
