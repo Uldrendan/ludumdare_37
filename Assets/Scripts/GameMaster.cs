@@ -38,6 +38,8 @@ public class GameMaster : MonoBehaviour
 	public string currentActivity;
 
 	void Start () {
+		Time.timeScale = 1;
+
 		if (instance != null)
 			Destroy(instance);
 		else
@@ -46,33 +48,40 @@ public class GameMaster : MonoBehaviour
 		Inventory = new List<ProductStock> ();
 	}
 
-	void Update () {
+	void Update()
+	{
 		energy -= Time.deltaTime;
 		hygiene -= Time.deltaTime;
 		hunger -= Time.deltaTime;
 		bathroom -= Time.deltaTime;
 
-        if (currentActivity == "Play") {
-            progress += Time.deltaTime;
-            Chara.GetComponent<Character>().Play();
-        }
-        if (currentActivity == "Work") {
-            money += Time.deltaTime;
-            Chara.GetComponent<Character>().Work();
-        }
+		if (currentActivity == "Play")
+		{
+			progress += Time.deltaTime;
+			Chara.GetComponent<Character>().Play();
+		}
+		if (currentActivity == "Work")
+		{
+			money += Time.deltaTime;
+			Chara.GetComponent<Character>().Work();
+		}
 
 		if (progress >= 100)
 		{
 			Time.timeScale = 0;
+			GameMessage.instance.gameObject.SetActive(true);
+			GameMessage.instance.PostGameMessage("You win!");
 		}
 
 		if (energy <= 0 || hygiene <= 0 || hunger <= 0 || bathroom <= 0)
 		{
 			Time.timeScale = 0;
+			GameMessage.instance.gameObject.SetActive(true);
+			GameMessage.instance.PostGameMessage("You lose...");
 		}
 
-		HandleTimer ();
-		CheckClick ();
+		HandleTimer();
+		CheckClick();
 	}
 
 	void HandleTimer () {
