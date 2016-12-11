@@ -60,16 +60,23 @@ public class GameMaster : MonoBehaviour
 					Debug.Log ("Checking parent " + obj.name + " for Interactable");
 					interactable = obj.GetComponent<Interactable> ();
 				}
-
 				if (interactable != null) {
 					Debug.Log ("Interactable");
 					interactable.OnClick ();
 				} else {
-					Debug.Log ("NOT Interactable");
+					ClearContext();
+					Debug.Log("NOT Interactable");
 				}
 			} else {
 				Debug.Log ("Clicked EMPTY SPACE");
 			}
 		}
+	}
+
+	public void ClearContext()
+	{
+		if (currentContext != null)
+			currentContext.SetActive(false);
+		currentContext = null;
 	}
 }
