@@ -5,14 +5,24 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour {
 
+	public static ShopManager instance;
+
 	public List<ShopItem> Stock;
 	public List<ProductStock> CurrentOrder;
 
 	public GameObject ShopItem_GO;
+	public GameObject CartItem_GO;
 	public GameObject ShopContent;
+	public GameObject CartContent;
 
 	// Use this for initialization
 	void Start () {
+
+		if (instance != null)
+			Destroy(instance);
+		else
+			instance = this;
+
 		Stock = new List<ShopItem> ();
 		CurrentOrder = new List<ProductStock> ();
 		AddProduct (new SaladProduct ());
@@ -39,7 +49,8 @@ public class ShopManager : MonoBehaviour {
 		Stock.RemoveAll ((x) => x.Product == product);
 	}
 
-	void OrderProduct(Product product) {
+	public void OrderProduct(Product product) {
+		Debug.Log ("Ordering 1 Product: " + product.Name);
 		if (CurrentOrder == null) {
 			CurrentOrder = new List<ProductStock> ();
 			GameEventScheduler.instance.ScheduleGameEvent (new OrderDeliveryEvent(TimeSpan.FromSeconds(10)));
@@ -48,11 +59,17 @@ public class ShopManager : MonoBehaviour {
 		if (order != null) {
 			order.Num++;
 		} else {
-			CurrentOrder.Add (new ProductStock (product, 1));
+			ProductStock stock = new ProductStock (product, 1);
+			CurrentOrder.Add (stock);
+			GameObject cartItem_GO = Instantiate (CartItem_GO, CartContent.transform) as GameObject;
+			CartItem cartItem = cartItem_GO.GetComponent<CartItem> ();
+			cartItem.Setup ();
+			cartItem.SetProductStock (stock);
 		}
 	}
 
-	void CancelProductOrder(Product product) {
+	public void CancelProductOrder(Product product) {
+		Debug.Log ("Cancelling 1 Order: " + product.Name);
 		ProductStock order = CurrentOrder.Find ((x) => x.Product == product);
 		if (order != null) {
 			order.Num--;

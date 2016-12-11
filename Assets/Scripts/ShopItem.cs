@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopItem : MonoBehaviour {
+public class ShopItem : Button {
 
 	public Product Product;
 	public Image Icon;
@@ -21,7 +21,6 @@ public class ShopItem : MonoBehaviour {
 		Description.text = Product.Description;
 		Cost.text = "$" + Product.Cost;
 		Icon.sprite = Product.Icon;
-
 	}
 
 	public void Setup() {
@@ -30,5 +29,6 @@ public class ShopItem : MonoBehaviour {
 		Name = transform.Find ("Name").GetComponent<Text> ();
 		Description = transform.Find ("Description").GetComponent<Text> ();
 		transform.localScale = new Vector3 (1, 1, 1);
+		onClick.AddListener (() => ShopManager.instance.OrderProduct(Product));
 	}
 }
