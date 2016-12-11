@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Workspace : Interactable {
+public class ContextMenuInteractable : Interactable {
 
 	public GameObject contextMenu;
 	
