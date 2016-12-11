@@ -36,7 +36,6 @@ public class GameMaster : MonoBehaviour
 	public string currentActivity;
 
 	void Start () {
-		currentDay = 1;
 		if (instance != null)
 			Destroy(instance);
 		else
@@ -55,7 +54,16 @@ public class GameMaster : MonoBehaviour
 			progress += Time.deltaTime;
 		if (currentActivity == "Work")
 			money += Time.deltaTime;
-			
+
+		if (progress >= 100)
+		{
+			Time.timeScale = 0;
+		}
+
+		if (energy <= 0 || hygiene <= 0 || hunger <= 0 || bathroom <= 0)
+		{
+			Time.timeScale = 0;
+		}
 
 		HandleTimer ();
 		CheckClick ();
