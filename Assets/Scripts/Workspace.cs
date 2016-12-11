@@ -5,13 +5,21 @@ using UnityEngine;
 public class Workspace : Interactable {
 
 	public GameObject contextMenu;
-
-	void Start () {
-		
-	}
+	bool open;
 	
 	public override void OnClick()
 	{
-		contextMenu.gameObject.SetActive(true);
+		if (!open)
+		{
+			contextMenu.gameObject.SetActive(true);
+			GameMaster.instance.currentContext = contextMenu;
+			open = true;
+		}
+		else
+		{
+			contextMenu.gameObject.SetActive(false);
+			GameMaster.instance.currentContext = null;
+			open = false;
+		}
 	}
 }

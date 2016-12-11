@@ -16,6 +16,8 @@ public class GameMaster : MonoBehaviour
 	public int currentDay;
 	public int currentTime;
 
+	public GameObject currentContext;
+
 	float timer;
 
 	void Start () {
