@@ -24,15 +24,71 @@ public class Character : MonoBehaviour {
 
     public void Idle()
     {
-        _animator.SetInteger("computerMode", 0);
+        this.transform.position = Points[(int)Locations.Desk].position;
+        _animator.SetInteger("computerMode", 0);        
     }
 
     public void Play()
     {
+        this.transform.position = Points[(int)Locations.Desk].position;
         _animator.SetInteger("computerMode", 1);
     }
 
     public void Work() {
+        this.transform.position = Points[(int)Locations.Desk].position;
         _animator.SetInteger("computerMode", 2);
+    }
+
+    public void Sleep() {
+        this.transform.position = Points[(int)Locations.Bed].position;
+        _animator.SetBool("isSleeping", true);        
+    }
+
+    public void Wake()
+    {
+        _animator.SetBool("isSleeping", false);
+    }
+
+    public void Cook()
+    {
+        transform.position = Points[(int)Locations.Kitchen].position;
+        _animator.SetBool("isCooking", true);        
+    }
+
+    public void Eat()
+    {
+        _animator.SetBool("isCooking", false);
+    }
+
+    public void OpenDoor()
+    {
+        transform.position = Points[(int)Locations.FrontDoor].position;
+        _animator.SetBool("isAnswering", true);        
+    }
+
+    public void CloseDoor()
+    {
+        _animator.SetBool("isAnswering", false);
+    }
+
+    public void EnterWashroom()
+    {
+        transform.position = Points[(int)Locations.Washroom].position;
+        _animator.SetBool("isWashroom", true);        
+    }
+
+    public void ExitWashroom()
+    {
+        _animator.SetBool("isWashroom", false);
+    }
+
+    public void Resume() {
+        // resumes last at-desk state
+        if (GameMaster.instance.currentActivity == "Play")
+            Play();
+        else if (GameMaster.instance.currentActivity == "Work")
+            Work();
+        else
+            Idle();
     }
 }
