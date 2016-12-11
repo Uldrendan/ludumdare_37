@@ -13,6 +13,7 @@ public class ShopItem : Button {
 
 	public void Start () {
 		Setup ();
+		onClick.AddListener (() => ShopManager.instance.OrderProduct(Product));
 	}
 
 	public void SetProduct(Product product) {
@@ -29,6 +30,5 @@ public class ShopItem : Button {
 		Name = transform.Find ("Name").GetComponent<Text> ();
 		Description = transform.Find ("Description").GetComponent<Text> ();
 		transform.localScale = new Vector3 (1, 1, 1);
-		onClick.AddListener (() => ShopManager.instance.OrderProduct(Product));
 	}
 }

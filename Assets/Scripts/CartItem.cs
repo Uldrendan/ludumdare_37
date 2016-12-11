@@ -16,6 +16,9 @@ public class CartItem : Button {
 	
 	// Update is called once per frame
 	void Update () {
+		if (ProductStock.Num == 0) {
+			Destroy (this.gameObject);
+		}
 		Amount.text = "x" + ProductStock.Num;
 	}
 
