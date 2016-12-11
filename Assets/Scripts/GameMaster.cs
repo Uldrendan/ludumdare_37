@@ -87,7 +87,7 @@ public class GameMaster : MonoBehaviour
 				else if(hunger <= 0)
 					GameMessage.instance.PostGameMessage("In a hunger induced rage you leave the house to scavenge. " +
 					                                     "You are mistaken for a bear and released into the forest. You lose...", true);
-				else(bathroom <= 0)
+				else if(bathroom <= 0)
 					GameMessage.instance.PostGameMessage("You've had an unfortunate accident. You leave the house to purchase new pants " +
 					                                     "where you die from embarassment. You lose...", true);
 			}
