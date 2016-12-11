@@ -27,6 +27,8 @@ public class GameMaster : MonoBehaviour
 	public int currentDay = 1;
 	public int currentTime;
 
+	public List<ProductStock> Inventory;
+
 	public GameObject currentContext;
 
 	float timer;
@@ -38,6 +40,8 @@ public class GameMaster : MonoBehaviour
 			Destroy(instance);
 		else
 			instance = this;
+
+		Inventory = new List<ProductStock> ();
 	}
 
 	void Update () {

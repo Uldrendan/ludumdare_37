@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour {
 
@@ -15,6 +16,9 @@ public class ShopManager : MonoBehaviour {
 	public GameObject ShopContent;
 	public GameObject CartContent;
 
+	public GameObject CartCost;
+	private Text _costText;
+
 	// Use this for initialization
 	void Start () {
 
@@ -23,12 +27,28 @@ public class ShopManager : MonoBehaviour {
 		else
 			instance = this;
 
+
+		_costText = CartCost.GetComponent<Text> ();
 		Stock = new List<ShopItem> ();
 		CurrentOrder = new List<ProductStock> ();
 		AddProduct (new SaladProduct ());
 		AddProduct (new ColdPizzaProduct ());
 		AddProduct (new HotPocketsProduct ());
 		AddProduct (new EnergyDrinkProduct ());
+	}
+
+	void Update () {
+		_costText.text = "$" + GetCartPrice ();
+	}
+
+	float GetCartPrice() {
+		float total = 0;
+		if (CurrentOrder != null) {
+			foreach (ProductStock stock in CurrentOrder) {
+				total += stock.GetTotalCost ();
+			}
+		}
+		return total;
 	}
 
 	void AddProduct(Product product) {
@@ -51,20 +71,24 @@ public class ShopManager : MonoBehaviour {
 
 	public void OrderProduct(Product product) {
 		Debug.Log ("Ordering 1 Product: " + product.Name);
-		if (CurrentOrder == null) {
+		if (CurrentOrder == null || CurrentOrder.Count == 0) {
 			CurrentOrder = new List<ProductStock> ();
-			GameEventScheduler.instance.ScheduleGameEvent (new OrderDeliveryEvent(TimeSpan.FromSeconds(10)));
+			GameEventScheduler.instance.ScheduleGameEvent (new OrderDeliveryEvent(TimeSpan.FromSeconds(3)));
 		}
-		ProductStock order = CurrentOrder.Find ((x) => x.Product == product);
-		if (order != null) {
-			order.Num++;
+		if (GetCartPrice () + product.Cost <= GameMaster.instance.Money) {
+			ProductStock order = CurrentOrder.Find ((x) => x.Product == product);
+			if (order != null) {
+				order.Num++;
+			} else {
+				ProductStock stock = new ProductStock (product, 1);
+				CurrentOrder.Add (stock);
+				GameObject cartItem_GO = Instantiate (CartItem_GO, CartContent.transform) as GameObject;
+				CartItem cartItem = cartItem_GO.GetComponent<CartItem> ();
+				cartItem.Setup ();
+				cartItem.SetProductStock (stock);
+			}
 		} else {
-			ProductStock stock = new ProductStock (product, 1);
-			CurrentOrder.Add (stock);
-			GameObject cartItem_GO = Instantiate (CartItem_GO, CartContent.transform) as GameObject;
-			CartItem cartItem = cartItem_GO.GetComponent<CartItem> ();
-			cartItem.Setup ();
-			cartItem.SetProductStock (stock);
+			Debug.Log ("Not Enough Dough");
 		}
 	}
 
@@ -79,6 +103,30 @@ public class ShopManager : MonoBehaviour {
 		}
 		if (CurrentOrder.Count == 0) {
 			GameEventScheduler.instance.CancelGameEvent (new OrderDeliveryEvent());
+		}
+	}
+
+	public void DeliverCart () {
+		if (GameMaster.instance.Money >= GetCartPrice ()) {
+			foreach (ProductStock stock in CurrentOrder) {
+				ProductStock match = GameMaster.instance.Inventory.Find ((x) => x.IsSameProduct (stock));
+				if (match != null) {
+					match.Add (stock);
+				} else {
+					GameMaster.instance.Inventory.Add (stock);
+				}
+			}
+			GameMaster.instance.Money -= GetCartPrice ();
+			EmptyCart ();
+		} else {
+			Debug.Log ("Not enough money to pay for order!");
+		}
+	}
+
+	public void EmptyCart () {
+		CurrentOrder = new List<ProductStock>();
+		foreach (Transform child in CartContent.transform) {
+			Destroy (child.gameObject);
 		}
 	}
 }

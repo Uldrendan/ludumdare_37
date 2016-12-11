@@ -74,4 +74,20 @@ public class ProductStock : ScriptableObject {
 		Product = product;
 		Num = num;
 	}
+
+	public bool IsSameProduct(ProductStock stock) {
+		return (stock.Product == Product);
+	}
+
+	public void Add(ProductStock stock) {
+		if (IsSameProduct (stock)) {
+			Num += stock.Num;
+		} else {
+			Debug.LogError ("Shouldn't be adding 2 different products");
+		}
+	}
+
+	public float GetTotalCost() {
+		return Product.Cost * Num;
+	}
 }

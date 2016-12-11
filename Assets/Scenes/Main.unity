@@ -484,6 +484,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470703556}
+--- !u!1 &491850112 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1714841810154578, guid: 0730dc3e0f4f1ff4f9c28893d6e2b3c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1897515511}
 --- !u!1 &648859045
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentDay: 0
   currentTime: 0
+  Inventory: []
   currentContext: {fileID: 0}
   currentActivity: 
 --- !u!4 &780153758
@@ -1128,13 +1134,22 @@ Prefab:
     - target: {fileID: 224991207742237712, guid: 0730dc3e0f4f1ff4f9c28893d6e2b3c2,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -256.21408
       objectReference: {fileID: 0}
     - target: {fileID: 224365247492131782, guid: 0730dc3e0f4f1ff4f9c28893d6e2b3c2,
         type: 2}
       propertyPath: m_SizeDelta.x
       value: -292
       objectReference: {fileID: 0}
+    - target: {fileID: 1714841810154578, guid: 0730dc3e0f4f1ff4f9c28893d6e2b3c2, type: 2}
+      propertyPath: m_Name
+      value: CartCost
+      objectReference: {fileID: 0}
+    - target: {fileID: 114155984416392358, guid: 0730dc3e0f4f1ff4f9c28893d6e2b3c2,
+        type: 2}
+      propertyPath: CartCost
+      value: 
+      objectReference: {fileID: 491850112}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0730dc3e0f4f1ff4f9c28893d6e2b3c2, type: 2}
   m_IsPrefabParent: 0

@@ -17,8 +17,7 @@ public class GameEventScheduler : MonoBehaviour {
 
 		if (instance != null)
 			Destroy(instance);
-		else
-			instance = this;
+		instance = this;
 
 		ScheduledEvents = new List<GameEvent> ();
 		CurrentEvents = new List<GameEvent> ();
@@ -133,7 +132,8 @@ public class OrderDeliveryEvent : GameEvent {
 	public OrderDeliveryEvent (TimeSpan timeUntilEvent) : base (timeUntilEvent, TimeSpan.Zero) {}
 
 	public override void Enter () {
-
+		List<ProductStock> order = ShopManager.instance.CurrentOrder;
+		ShopManager.instance.DeliverCart ();
 	}
 
 	public override void Exit () {
