@@ -38,7 +38,7 @@ public class ShopManager : MonoBehaviour {
 	}
 
 	void Update () {
-		_costText.text = "$" + GetCartPrice ();
+		_costText.text = GetCartPrice ().ToString("c2") + " / " + GameMaster.instance.Money.ToString("c2");
 	}
 
 	float GetCartPrice() {
