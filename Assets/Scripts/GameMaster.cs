@@ -49,6 +49,11 @@ public class GameMaster : MonoBehaviour
 
 	void CheckClick () {
 		if (Input.GetMouseButtonDown (0)) {
+			if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+			{
+				Debug.Log("Selecting context menu option");
+				return;
+			}
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			if (Physics.Raycast (ray, out hit, 1000f)) {
