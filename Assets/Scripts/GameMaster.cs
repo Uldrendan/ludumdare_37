@@ -27,6 +27,8 @@ public class GameMaster : MonoBehaviour
 	public int currentDay = 1;
 	public int currentTime;
 
+    public GameObject Chara;
+
 	public List<ProductStock> Inventory;
 
 	public GameObject currentContext;
@@ -51,11 +53,14 @@ public class GameMaster : MonoBehaviour
 		hunger -= Time.deltaTime;
 		bathroom -= Time.deltaTime;
 
-		if (currentActivity == "Play")
-			progress += Time.deltaTime;
-		if (currentActivity == "Work")
-			money += Time.deltaTime;
-			
+        if (currentActivity == "Play") {
+            progress += Time.deltaTime;
+            Chara.GetComponent<Character>().Play();
+        }
+        if (currentActivity == "Work") {
+            money += Time.deltaTime;
+            Chara.GetComponent<Character>().Work();
+        }			
 
 		HandleTimer ();
 		CheckClick ();
