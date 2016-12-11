@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Workspace : Interactable {
 
+	public GameObject contextMenu;
 
 	void Start () {
 		
@@ -11,7 +12,6 @@ public class Workspace : Interactable {
 	
 	public override void OnClick()
 	{
-		Vector3 mousePos = Input.mousePosition;
-		Debug.Log(mousePos);
+		contextMenu.gameObject.SetActive(true);
 	}
 }
