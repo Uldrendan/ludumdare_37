@@ -70,14 +70,14 @@ public class GameMaster : MonoBehaviour
 		{
 			Time.timeScale = 0;
 			GameMessage.instance.gameObject.SetActive(true);
-			GameMessage.instance.PostGameMessage("You win!");
+			GameMessage.instance.PostGameMessage("You win!", true);
 		}
 
 		if (energy <= 0 || hygiene <= 0 || hunger <= 0 || bathroom <= 0)
 		{
 			Time.timeScale = 0;
 			GameMessage.instance.gameObject.SetActive(true);
-			GameMessage.instance.PostGameMessage("You lose...");
+			GameMessage.instance.PostGameMessage("You lose...", true);
 		}
 
 		HandleTimer();
