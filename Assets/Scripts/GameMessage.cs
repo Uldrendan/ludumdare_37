@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,9 +29,37 @@ public class GameMessage : MonoBehaviour
 	{
 		gameMessagePanel.SetActive(true);
 		messageText.text = message;
-		actionButton.transform.GetChild(0).GetComponent<Text>().text = "Restart";
-		actionButton.onClick.AddListener(delegate { Restart();});
+		actionButton.transform.GetChild(0).GetComponent<Text>().text = "Dismiss";
+		actionButton.onClick.AddListener(delegate { Dismiss();});
+	}
 
+	public void PostGameMessage(string message, bool restart)
+	{
+		gameMessagePanel.SetActive(true);
+		messageText.text = message;
+		if (restart)
+		{
+			actionButton.transform.GetChild(0).GetComponent<Text>().text = "Restart";
+			actionButton.onClick.AddListener(delegate { Restart(); });
+		}
+		else
+		{
+			actionButton.transform.GetChild(0).GetComponent<Text>().text = "Dismiss";
+			actionButton.onClick.AddListener(delegate { Dismiss(); });
+		}
+	}
+
+	public void PostGameMessage(string message, string buttonMessage, Action method)
+	{
+		gameMessagePanel.SetActive(true);
+		messageText.text = message;
+		actionButton.transform.GetChild(0).GetComponent<Text>().text = buttonMessage;
+		actionButton.onClick.AddListener(delegate { method(); });
+	}
+
+	public void Dismiss()
+	{
+		gameMessagePanel.SetActive(false);
 	}
 
 	public void Restart()
