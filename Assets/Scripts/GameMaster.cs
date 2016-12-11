@@ -36,6 +36,7 @@ public class GameMaster : MonoBehaviour
 	public string currentActivity;
 
 	void Start () {
+		currentDay = 1;
 		if (instance != null)
 			Destroy(instance);
 		else
