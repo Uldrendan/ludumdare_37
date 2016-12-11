@@ -473,16 +473,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114282465086772424, guid: 95ea68f2a61448c46a27a20dfa9340e4,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114298985986420088, guid: 95ea68f2a61448c46a27a20dfa9340e4,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114628381063012280, guid: 95ea68f2a61448c46a27a20dfa9340e4,
         type: 2}
       propertyPath: shopMenu
