@@ -21,7 +21,8 @@ public class SaladProduct : Product {
 	}
 
 	public override void OnUse () {
-
+		GameMaster.instance.Hunger += 20;
+		GameMaster.instance.Energy += 10;
 	}
 }
 
@@ -34,7 +35,7 @@ public class HotPocketsProduct : Product {
 	}
 
 	public override void OnUse () {
-
+		GameMaster.instance.Hunger += 10;
 	}
 }
 
@@ -47,7 +48,8 @@ public class ColdPizzaProduct : Product {
 	}
 
 	public override void OnUse () {
-
+		GameMaster.instance.Hunger += 30;
+		GameMaster.instance.Hygiene -= 20;
 	}
 }
 

@@ -59,8 +59,9 @@ GameObject:
   - component: {fileID: 222895938102864218}
   - component: {fileID: 114042841633997382}
   - component: {fileID: 114582958177289008}
+  - component: {fileID: 114343321463833788}
   m_Layer: 0
-  m_Name: Button (2)
+  m_Name: Salad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,8 +430,9 @@ GameObject:
   - component: {fileID: 222350601341954134}
   - component: {fileID: 114073174716659214}
   - component: {fileID: 114641051835186612}
+  - component: {fileID: 114826597107488814}
   m_Layer: 0
-  m_Name: Button
+  m_Name: Hotpocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -447,8 +449,9 @@ GameObject:
   - component: {fileID: 222152134831176180}
   - component: {fileID: 114233418138577204}
   - component: {fileID: 114705604870369292}
+  - component: {fileID: 114950540899293148}
   m_Layer: 0
-  m_Name: Button (1)
+  m_Name: Pizza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3377,6 +3380,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460aad473ab6d4e78a77e72ea275e4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114343321463833788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1026765729100612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3638a14702ecd4536b9bcc436f5b46e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114358124334431198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3834,7 +3848,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114042841633997382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114343321463833788}
+        m_MethodName: EatSalad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114604953828366498
@@ -3944,7 +3969,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114073174716659214}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114826597107488814}
+        m_MethodName: EatPocket
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114643435549147788
@@ -4051,7 +4087,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114233418138577204}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114950540899293148}
+        m_MethodName: EatPizza
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114737416046425532
@@ -4169,6 +4216,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Shop
+--- !u!114 &114826597107488814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1384909059580832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3638a14702ecd4536b9bcc436f5b46e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114877519610914030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4324,6 +4382,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contextMenu: {fileID: 1468139286963506}
+--- !u!114 &114950540899293148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397669501028126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3638a14702ecd4536b9bcc436f5b46e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114990096581496232
 MonoBehaviour:
   m_ObjectHideFlags: 1
