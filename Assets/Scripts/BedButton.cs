@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +17,9 @@ public class BedButton : MonoBehaviour {
 		GameMaster.instance.Energy += 100;
 		contextMenu.SetActive(false);
 		GameMaster.instance.ClearContext();
-	}
+        GameMaster.instance.Chara.GetComponent<Character>().Sleep();
+        GameEventScheduler.instance.ScheduleGameEvent(new OnSleepEvent(TimeSpan.FromSeconds(5)));
+    }
 
 	public void MakeBed()
 	{
