@@ -81,7 +81,7 @@ public class GameMaster : MonoBehaviour
 		}
 	}
 
-	void GetStock(Product product) {
+	int GetStock(Product product) {
 		ProductStock match = Inventory.Find ((x) => x.Product.GetType () == product.GetType ());
 		if (match != null) {
 			return match.Num;
