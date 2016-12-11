@@ -52,6 +52,15 @@ public class GameMaster : MonoBehaviour
 		hunger -= Time.deltaTime;
 		bathroom -= Time.deltaTime;
 
+        if (currentActivity == "Play") {
+            progress += Time.deltaTime;
+            Chara.GetComponent<Character>().Play();
+        }
+        if (currentActivity == "Work") {
+            money += Time.deltaTime;
+            Chara.GetComponent<Character>().Work();
+        }
+
 		if (progress >= 100)
 		{
 			Time.timeScale = 0;
@@ -61,15 +70,6 @@ public class GameMaster : MonoBehaviour
 		{
 			Time.timeScale = 0;
 		}
-
-        if (currentActivity == "Play") {
-            progress += Time.deltaTime;
-            Chara.GetComponent<Character>().Play();
-        }
-        if (currentActivity == "Work") {
-            money += Time.deltaTime;
-            Chara.GetComponent<Character>().Work();
-        }			
 
 		HandleTimer ();
 		CheckClick ();
