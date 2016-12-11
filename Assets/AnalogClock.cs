@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClockHand : MonoBehaviour {
+public class AnalogClock : Interactable {
+
+	public GameObject ClockHand;
 
 	private AudioSource _audioSource;
 	private int _prevTime = 0;
@@ -18,11 +20,19 @@ public class ClockHand : MonoBehaviour {
 		int time = GameMaster.instance.currentTime;
 		if (_prevTime != time) {
 			float rotation = 30 * (time % 12);
-			transform.localRotation = Quaternion.Euler (0, 90 - rotation, -90);
+			ClockHand.transform.localRotation = Quaternion.Euler (0, 90 - rotation, -90);
 			// this is pretty shitty, dkm
+			_audioSource.volume = 0.1f;
+			_audioSource.pitch = 1;
 			_audioSource.Play();
 		}
 
 		_prevTime = time;
+	}
+
+	public override void OnClick() {
+		_audioSource.volume = 0.05f;
+		_audioSource.pitch = 3;
+		_audioSource.Play();
 	}
 }
