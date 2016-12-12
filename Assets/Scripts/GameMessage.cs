@@ -18,8 +18,7 @@ public class GameMessage : MonoBehaviour
 	{
 		if (instance != null)
 			Destroy(instance);
-		else
-			instance = this;
+		instance = this;
 
 		messageText = gameMessagePanel.transform.GetChild(0).GetComponent<Text>();
 		actionButton = gameMessagePanel.transform.GetChild(1).GetComponent<Button>();
@@ -49,12 +48,12 @@ public class GameMessage : MonoBehaviour
 		}
 	}
 
-	public void PostGameMessage(string message, string buttonMessage, Action method)
+	public void PostGameMessage(string message, string buttonMessage, System.Action method)
 	{
 		gameMessagePanel.SetActive(true);
 		messageText.text = message;
 		actionButton.transform.GetChild(0).GetComponent<Text>().text = buttonMessage;
-		actionButton.onClick.AddListener(delegate { method(); });
+		actionButton.onClick.AddListener(() => method());
 	}
 
 	public void Dismiss()

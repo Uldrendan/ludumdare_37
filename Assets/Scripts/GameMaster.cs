@@ -36,15 +36,18 @@ public class GameMaster : MonoBehaviour
 	float timer;
 	bool paused; //to pause the update loop functions (for game over or possible pause menu)
 
+	public Action defaultAction;
+	public Action currentAction;
 	public string currentActivity;
 
 	void Start () {
+		defaultAction = ScriptableObject.CreateInstance<IdleAction>();
+		currentAction = defaultAction;
 		Time.timeScale = 1;
 
 		if (instance != null)
 			Destroy(instance);
-		else
-			instance = this;
+		instance = this;
 
 		Inventory = new List<ProductStock> ();
 	}
@@ -53,20 +56,13 @@ public class GameMaster : MonoBehaviour
 	{
 		if (!paused)
 		{
-			energy -= Time.deltaTime;
-			hygiene -= Time.deltaTime;
-			hunger -= Time.deltaTime;
-			bathroom -= Time.deltaTime;
-
-			if (currentActivity == "Play")
+			if (currentAction is PlayAction)
 			{
-				progress += Time.deltaTime;
-				Chara.GetComponent<Character>().Play();
+				Character.instance.Play();
 			}
-			if (currentActivity == "Work")
+			if (currentAction is WorkAction)
 			{
-				money += Time.deltaTime;
-				Chara.GetComponent<Character>().Work();
+				Character.instance.Work();
 			}
 
 			if (progress >= 100)
@@ -91,7 +87,7 @@ public class GameMaster : MonoBehaviour
 					GameMessage.instance.PostGameMessage("You've had an unfortunate accident. You leave the house to purchase new pants " +
 					                                     "where you die from embarassment. You lose...", true);
 			}
-
+			ManageActions();
 			HandleTimer();
 			CheckClick();
 		}
@@ -170,5 +166,15 @@ public class GameMaster : MonoBehaviour
 		if (currentContext != null)
 			currentContext.SetActive(false);
 		currentContext = null;
+	}
+
+	public void ManageActions()
+	{
+		currentAction.Do();
+		if (currentAction.ExitCriteria())
+		{
+			currentAction.Exit();
+			currentAction = defaultAction;
+		}
 	}
 }

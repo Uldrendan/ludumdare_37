@@ -4,6 +4,8 @@ using UnityEngine;
 
 // Handles character behaviour and positioning in game world
 public class Character : MonoBehaviour {
+
+	public static Character instance;
     
     public enum Locations { Desk, Bed, Washroom, Kitchen, FrontDoor, Center }
 
@@ -14,6 +16,10 @@ public class Character : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (instance != null)
+			Destroy(instance);
+		instance = this;
+
         _animator = this.GetComponent<Animator>();
         Idle();
     }

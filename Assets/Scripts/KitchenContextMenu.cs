@@ -15,10 +15,11 @@ public class KitchenContextMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_hotPocketButton = HotPocketButton_GO.GetComponent<UseProductButton> ();
-		_hotPocketButton.SetProduct(new HotPocketsProduct());
+		_hotPocketButton.SetProduct( ScriptableObject.CreateInstance<HotPocketsProduct>());
 		_coldPizzaButton = ColdPizzaButton_GO.GetComponent<UseProductButton> ();
-		_coldPizzaButton.SetProduct(new ColdPizzaProduct());
+		_coldPizzaButton.SetProduct( ScriptableObject.CreateInstance <ColdPizzaProduct>());
 		_gardenSaladButton = GardenSaladButton_GO.GetComponent<UseProductButton> ();
-		_gardenSaladButton.SetProduct (new SaladProduct ());
+		_gardenSaladButton.SetProduct (ScriptableObject.CreateInstance<SaladProduct>());
+
 	}
 }
