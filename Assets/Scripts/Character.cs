@@ -44,6 +44,7 @@ public class Character : MonoBehaviour {
 
     public void Sleep() {
         this.transform.position = Points[(int)Locations.Bed].position;
+        this.transform.localScale = Points[(int)Locations.Bed].localScale;
         _animator.SetBool("isSleeping", true);        
     }
 
