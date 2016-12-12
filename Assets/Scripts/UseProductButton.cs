@@ -29,6 +29,7 @@ public class UseProductButton : Button {
 	public void UseProduct () {
 		if (GameMaster.instance.GetStock (Product) > 0) {
 			GameMaster.instance.UseProduct (Product);
+			Character.instance.CrunchSound ();
 		}
 		contextMenu.SetActive(false);
 		GameMaster.instance.ClearContext();

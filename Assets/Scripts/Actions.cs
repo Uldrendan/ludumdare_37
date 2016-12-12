@@ -43,6 +43,7 @@ public class ShowerAction : Action
 		Debug.Log ("SHOWER END");
 		Character.instance.ExitWashroom ();
 		Washroom.instance.ShowerOff ();
+		Character.instance.WhiffSound ();
 	}
 
 	public override void Do()
@@ -79,6 +80,8 @@ public class BrushTeethAction : Action
 	{
 		Character.instance.ExitWashroom ();
 		Washroom.instance.SinkOff ();
+		Character.instance.WhiffSound ();
+
 	}
 
 	public override void Do()
@@ -104,12 +107,14 @@ public class ToiletAction : Action
 	{
 		Character.instance.EnterWashroom ();
 		Washroom.instance.ShutDoor ();
+		Washroom.instance.UseToilet ();
 	}
 
 	public override void Exit ()
 	{
 		Character.instance.ExitWashroom ();
 		Washroom.instance.FlushToilet ();
+		Character.instance.WhiffSound ();
 	}
 
 	public override void Do()
@@ -130,6 +135,16 @@ public class ToiletAction : Action
 
 public class WorkAction : Action
 {
+	public override void Enter ()
+	{
+		Workspace.instance.StartTyping ();
+	}
+
+	public override void Exit ()
+	{
+		Workspace.instance.StopKeyboardSounds ();
+	}
+
 	public override void Do()
 	{
 		GameMaster.instance.Money += 5;
@@ -148,6 +163,16 @@ public class WorkAction : Action
 
 public class PlayAction : Action
 {
+	public override void Enter ()
+	{
+		Workspace.instance.StartMashing ();
+	}
+
+	public override void Exit ()
+	{
+		Workspace.instance.StopKeyboardSounds ();
+	}
+
 	public override void Do()
 	{
 		GameMaster.instance.Progress += Time.deltaTime * OVERALL_MODIFIER * PROGRESS_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
@@ -181,15 +206,19 @@ public class IdleAction : Action
 
 public class SleepAction : Action
 {
-    public override void Enter()
-    {
-        Character.instance.Sleep();
-    }
+	public override void Enter ()
+	{
+		Character.instance.Sleep();
+		Character.instance.WhiffSound ();
+		Bed.instance.BeginSnoring ();
+	}
 
-    public override void Exit()
-    {
-        Character.instance.Wake();
-    }
+	public override void Exit ()
+	{
+		Character.instance.Wake();
+		Character.instance.WhiffSound ();
+		Bed.instance.StopSnoring ();
+	}
 
     public override void Do()
 	{

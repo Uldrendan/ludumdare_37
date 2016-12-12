@@ -10,6 +10,10 @@ public class Character : MonoBehaviour {
     public enum Locations { Desk, Bed, Washroom, Kitchen, FrontDoor, Center }
 
     private Animator _animator;
+	private AudioSource _audioSource;
+	public AudioClip Whiff;
+	public AudioClip Crunch;
+
 
     // set in inspector with children of Waypoints prefab, same order as enum Locations
     public Transform[] Points; 
@@ -21,6 +25,7 @@ public class Character : MonoBehaviour {
 		instance = this;
 
         _animator = this.GetComponent<Animator>();
+		_audioSource = this.GetComponent<AudioSource> ();
         Idle();
     }
 
@@ -96,4 +101,15 @@ public class Character : MonoBehaviour {
         else
             Idle();
     }
+
+	public void WhiffSound () {
+		_audioSource.pitch = Random.Range (0.7f, 1.3f);
+		_audioSource.clip = Whiff;
+		_audioSource.Play ();
+	}
+	public void CrunchSound () {
+		_audioSource.pitch = Random.Range (0.7f, 1.3f);
+		_audioSource.clip = Crunch;
+		_audioSource.Play ();
+	}
 }

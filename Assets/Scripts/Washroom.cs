@@ -9,6 +9,7 @@ public class Washroom : MonoBehaviour {
 	public ParticleSystem _steam;
 	private AudioSource _audioSource;
 	private AudioSource _doorAudioSource;
+	public AudioClip UsingWashroom;
 	public AudioClip DoorClose;
 	public AudioClip Flush;
 	public AudioClip Shower;
@@ -34,6 +35,12 @@ public class Washroom : MonoBehaviour {
 	public void ShutDoor () {
 		_doorAudioSource.clip = DoorClose;
 		_doorAudioSource.Play ();
+	}
+
+	public void UseToilet () {
+		_audioSource.loop = true;
+		_audioSource.clip = UsingWashroom;
+		_audioSource.Play ();
 	}
 
 	public void FlushToilet () {

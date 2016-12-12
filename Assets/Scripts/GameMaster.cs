@@ -31,6 +31,8 @@ public class GameMaster : MonoBehaviour
 
 	public List<ProductStock> Inventory;
 
+	public string currentActivity;
+
 	public GameObject currentContext;
 	public const float REALTIMESECONDS_PER_HOUR = 3;
 
@@ -40,9 +42,15 @@ public class GameMaster : MonoBehaviour
 	public Action defaultAction;
 	private Action _currentAction;
 	public Action currentAction {
-		get { return _currentAction; } set { _currentAction = value; _currentAction.Enter (); }
+		get { return _currentAction; }
+		set {
+			if (_currentAction != null) {
+				_currentAction.Exit ();  
+			}
+			_currentAction = value; 
+			_currentAction.Enter (); 
+		}
 	}
-	public string currentActivity;
 
 	void Start () {
 		defaultAction = ScriptableObject.CreateInstance<IdleAction>();
@@ -181,7 +189,6 @@ public class GameMaster : MonoBehaviour
 		Debug.Log ("Current Action: " + currentAction.GetType () + ", " + currentAction.ExitCriteria ());
 		if (currentAction.ExitCriteria())
 		{
-			currentAction.Exit();
 			currentAction = defaultAction;
 		}
 	}
