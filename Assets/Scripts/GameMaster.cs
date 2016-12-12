@@ -72,7 +72,7 @@ public class GameMaster : MonoBehaviour
 			{
 				paused = true;
 				Time.timeScale = 0;
-				GameMessage.instance.PostGameMessage("You win!", true);
+				GameMessage.instance.PostGameMessage("Congratulations! You're finally ready for raiding! Now do it again for the next expansion!", true);
 			}
 
 			if (energy <= 0 || hygiene <= 0 || hunger <= 0 || bathroom <= 0)
