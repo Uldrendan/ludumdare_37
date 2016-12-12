@@ -6,6 +6,8 @@ public class Bed : MonoBehaviour {
 
 	public static Bed instance;
 
+	public ParticleSystem _particle;
+
 	private AudioSource _audioSource;
 
 	// Use this for initialization
@@ -18,10 +20,12 @@ public class Bed : MonoBehaviour {
 	}
 
 	public void BeginSnoring() {
+		_particle.Play ();
 		_audioSource.loop = true;
 		_audioSource.Play ();
 	}
 	public void StopSnoring() {
+		_particle.Stop ();
 		_audioSource.Stop ();
 	}
 }
