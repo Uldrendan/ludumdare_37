@@ -137,8 +137,10 @@ public class ToiletAction : Action
 
 public class WorkAction : Action
 {
+	int startTime;
 	public override void Enter ()
 	{
+		startTime = GameMaster.instance.currentTime;
 		Workspace.instance.StartTyping ();
 	}
 
@@ -149,7 +151,11 @@ public class WorkAction : Action
 
 	public override void Do()
 	{
-		GameMaster.instance.Money += 5;
+		if (startTime != GameMaster.instance.currentTime)
+		{
+			startTime = GameMaster.instance.currentTime;
+			GameMaster.instance.Money += 5;
+		}
 
 		GameMaster.instance.Hygiene -= Time.deltaTime * OVERALL_MODIFIER * HYGIENE_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
 		GameMaster.instance.Energy -= Time.deltaTime * OVERALL_MODIFIER * ENERGY_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
