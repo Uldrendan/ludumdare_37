@@ -5,10 +5,8 @@ using UnityEngine;
 public class BedContextMenu : MonoBehaviour {
 	
 	public GameObject SleepButton_GO;
-	public GameObject MakeBedButton_GO;
 
 	public DoActionButton SleepButton;
-	public DoActionButton MakeBedButton;
 
 	// Use this for initialization
 	void Start () {

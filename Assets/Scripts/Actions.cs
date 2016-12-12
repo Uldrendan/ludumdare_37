@@ -218,6 +218,17 @@ public class SleepAction : Action
 	}
 
 	public override void Do()
+    public override void Enter()
+    {
+        Character.instance.Sleep();
+    }
+
+    public override void Exit()
+    {
+        Character.instance.Wake();
+    }
+
+    public override void Do()
 	{
 		GameMaster.instance.Hygiene -= Time.deltaTime * OVERALL_MODIFIER * SLEEP_METABOLISM_MODIFIER * HYGIENE_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
 		GameMaster.instance.Energy += Time.deltaTime * OVERALL_MODIFIER * SLEEP_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
