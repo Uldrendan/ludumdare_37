@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class ShopButton : Button {
 
-	public GameObject shopMenu;
 	public GameObject contextMenu;
 
 	// Use this for initialization
 	void Start () {
+		contextMenu = transform.parent.gameObject;
 		onClick.AddListener(() => OpenShop());
 	}
 	
@@ -21,7 +21,7 @@ public class ShopButton : Button {
 
 	public void OpenShop()
 	{
-		shopMenu.SetActive(true);
+		ShopManager.instance.SetAmazonActive(true);
 		contextMenu.SetActive(false);
 		GameMaster.instance.ClearContext();
 	}

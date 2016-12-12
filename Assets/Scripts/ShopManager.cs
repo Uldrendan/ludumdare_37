@@ -11,6 +11,7 @@ public class ShopManager : MonoBehaviour {
 	public List<ShopItem> Stock;
 	public List<ProductStock> CurrentOrder;
 
+	public GameObject Amazon_GO;
 	public GameObject ShopItem_GO;
 	public GameObject CartItem_GO;
 	public GameObject ShopContent;
@@ -24,8 +25,7 @@ public class ShopManager : MonoBehaviour {
 
 		if (instance != null)
 			Destroy(instance);
-		else
-			instance = this;
+		instance = this;
 
 
 		_costText = CartCost.GetComponent<Text> ();
@@ -35,6 +35,10 @@ public class ShopManager : MonoBehaviour {
 		AddProduct (ColdPizzaProduct.CreateInstance<ColdPizzaProduct>());
 		AddProduct (HotPocketsProduct.CreateInstance<HotPocketsProduct>());
 		AddProduct (EnergyDrinkProduct.CreateInstance<EnergyDrinkProduct>());
+	}
+
+	public void SetAmazonActive(bool active) {
+		Amazon_GO.SetActive (active);
 	}
 
 	void Update () {
