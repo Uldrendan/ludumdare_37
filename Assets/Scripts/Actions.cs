@@ -207,26 +207,17 @@ public class SleepAction : Action
 {
 	public override void Enter ()
 	{
+		Character.instance.Sleep();
 		Character.instance.WhiffSound ();
 		Bed.instance.BeginSnoring ();
 	}
 
 	public override void Exit ()
 	{
+		Character.instance.Wake();
 		Character.instance.WhiffSound ();
 		Bed.instance.StopSnoring ();
 	}
-
-	public override void Do()
-    public override void Enter()
-    {
-        Character.instance.Sleep();
-    }
-
-    public override void Exit()
-    {
-        Character.instance.Wake();
-    }
 
     public override void Do()
 	{
