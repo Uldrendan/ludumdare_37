@@ -1211,6 +1211,7 @@ Prefab:
     - {fileID: 114262543836831166, guid: 95ea68f2a61448c46a27a20dfa9340e4, type: 2}
     - {fileID: 114105845864589854, guid: 95ea68f2a61448c46a27a20dfa9340e4, type: 2}
     - {fileID: 114333915229601580, guid: 95ea68f2a61448c46a27a20dfa9340e4, type: 2}
+    - {fileID: 114766272805357790, guid: 95ea68f2a61448c46a27a20dfa9340e4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 95ea68f2a61448c46a27a20dfa9340e4, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &700481028 stripped
@@ -2002,6 +2003,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resource: 4
+--- !u!1 &1337697027 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1468139286963506, guid: 95ea68f2a61448c46a27a20dfa9340e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 700481027}
+--- !u!114 &1337697032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1337697027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77e4e5149bb23647b720e393b499825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SleepButton_GO: {fileID: 1470571600}
+  MakeBedButton_GO: {fileID: 0}
+  SleepButton: {fileID: 0}
+  MakeBedButton: {fileID: 0}
 --- !u!1 &1470571600 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1877469480799990, guid: 95ea68f2a61448c46a27a20dfa9340e4,

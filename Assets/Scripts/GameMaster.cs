@@ -32,6 +32,7 @@ public class GameMaster : MonoBehaviour
 	public List<ProductStock> Inventory;
 
 	public GameObject currentContext;
+	public const float REALTIMESECONDS_PER_HOUR = 3;
 
 	float timer;
 	bool paused; //to pause the update loop functions (for game over or possible pause menu)
@@ -98,7 +99,7 @@ public class GameMaster : MonoBehaviour
 
 	void HandleTimer () {
 		timer += Time.deltaTime;
-		if (timer >= 1)
+		if (timer >= REALTIMESECONDS_PER_HOUR)
 		{
 			if (currentTime < 23)
 				currentTime += 1;
