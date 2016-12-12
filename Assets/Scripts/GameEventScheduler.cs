@@ -35,7 +35,7 @@ public class GameEventScheduler : MonoBehaviour {
 		while (!eventsUpToDate) {
 			GameEvent ge = ScheduledEvents.FirstOrDefault ();
 			if (ge != null) {
-				if (ge.StartTime.CompareTo (DateTime.Now) < 0) {
+				if (ge.StartTime.CompareTo (GameDateTime.Now()) < 0) {
 					ScheduledEvents.RemoveAt (0);
 					CurrentEvents.Add (ge);
 					CurrentEvents.Sort ((ge1, ge2) => ge1.EndTime.CompareTo (ge2.EndTime));
@@ -83,21 +83,21 @@ public class GameEventScheduler : MonoBehaviour {
 }
 
 public abstract class GameEvent : ScriptableObject {
-	public DateTime StartTime;
-	public DateTime EndTime;
+	public GameDateTime StartTime;
+	public GameDateTime EndTime;
 
 	public GameEvent () {
-		StartTime = DateTime.Now;
+		StartTime = GameDateTime.Now ();
 		EndTime = StartTime;
 	}
 
-	public GameEvent (DateTime startTime, DateTime endTime) {
+	public GameEvent (GameDateTime startTime, GameDateTime endTime) {
 		StartTime = startTime;
 		EndTime = endTime;
 	}
 
-	public GameEvent (TimeSpan timeUntilEvent, TimeSpan eventLength) {
-		StartTime = DateTime.Now.Add (timeUntilEvent);
+	public GameEvent (GameTimeSpan timeUntilEvent, GameTimeSpan eventLength) {
+		StartTime = GameDateTime.Now().Add (timeUntilEvent);
 		EndTime = StartTime.Add (eventLength);
 	}
 
@@ -114,8 +114,8 @@ public abstract class GameEvent : ScriptableObject {
 
 public class TestEvent : GameEvent {
 	public TestEvent () : base () {}
-	public TestEvent (DateTime startTime, DateTime endTime) : base (startTime,endTime) {}
-	public TestEvent (TimeSpan timeUntilEvent, TimeSpan eventLength) : base (timeUntilEvent, eventLength) {}
+	public TestEvent (GameDateTime startTime, GameDateTime endTime) : base (startTime,endTime) {}
+	public TestEvent (GameTimeSpan timeUntilEvent, GameTimeSpan eventLength) : base (timeUntilEvent, eventLength) {}
 
 	public override void Enter () {
 		Debug.Log ("You gonna die soon");
@@ -128,8 +128,8 @@ public class TestEvent : GameEvent {
 public class OrderDeliveryEvent : GameEvent {
 	public OrderDeliveryEvent () : base () {}
 	//Delivery events are always instantaneous;
-	public OrderDeliveryEvent (DateTime startTime) : base (startTime,startTime) {}
-	public OrderDeliveryEvent (TimeSpan timeUntilEvent) : base (timeUntilEvent, TimeSpan.Zero) {}
+	public OrderDeliveryEvent (GameDateTime startTime) : base (startTime,startTime) {}
+	public OrderDeliveryEvent (GameTimeSpan timeUntilEvent) : base (timeUntilEvent, GameTimeSpan.Zero()) {}
 
 	public override void Enter () {
 		List<ProductStock> order = ShopManager.instance.CurrentOrder;
@@ -138,5 +138,103 @@ public class OrderDeliveryEvent : GameEvent {
 
 	public override void Exit () {
 
+	}
+}
+
+public class GameDateTime {
+	public int Day;
+	public int Hour;
+
+	public GameDateTime(int day, int hour) {
+		Day = day;
+		Hour = hour;
+		Validate ();
+	}
+
+	public void Validate () {
+		while (Hour >= 24) {
+			Hour -= 24;
+			Day++;
+		}
+
+		while (Hour < 0) {
+			Hour += 24;
+			Day--;
+		}
+	}
+
+	public static GameDateTime Now () {
+		return new GameDateTime (GameMaster.instance.currentDay, GameMaster.instance.currentTime);
+	}
+
+	public GameDateTime Add (GameTimeSpan span) {
+		GameDateTime newDateTime = this;
+		newDateTime.Day += span.Days;
+		newDateTime.Hour += span.Hours;
+		newDateTime.Validate ();
+		return newDateTime;
+	}
+
+	public GameTimeSpan Difference (GameDateTime dateTime) {
+		GameDateTime smaller;
+		GameDateTime larger;
+		if (CompareTo (dateTime) < 0) {
+			smaller = this;
+			larger = dateTime;
+		} else {
+			smaller = dateTime;
+			larger = this;
+		}
+
+		int days = larger.Day - smaller.Day;
+		int hours = larger.Hour - smaller.Hour;
+		return new GameTimeSpan (days, hours);
+	}
+
+	public int CompareTo (object obj) {
+		if (!(obj is GameDateTime)) {
+			return 2;
+		}
+		GameDateTime dateTime = (GameDateTime)obj;
+		if (Day > dateTime.Day) {
+			return 1;
+		} else if (Day < dateTime.Day) {
+			return -1;
+		} else {
+			if (Hour > dateTime.Hour) {
+				return 1;
+			} else if (Hour < dateTime.Hour) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
+	}
+}
+
+public class GameTimeSpan {
+	public int Days;
+	public int Hours;
+
+	public GameTimeSpan(int days, int hours) {
+		Days = days;
+		Hours = hours;
+		Validate ();
+	}
+
+	public void Validate () {
+		while (Hours >= 24) {
+			Hours -= 24;
+			Days++;
+		}
+
+		while (Hours < 0) {
+			Hours += 24;
+			Days--;
+		}
+	}
+
+	public static GameTimeSpan Zero () {
+		return new GameTimeSpan (0, 0);
 	}
 }

@@ -92,7 +92,7 @@ public class GameMaster : MonoBehaviour
 
 	void HandleTimer () {
 		timer += Time.deltaTime;
-		if (timer >= 5)
+		if (timer >= 1)
 		{
 			if (currentTime < 23)
 				currentTime += 1;

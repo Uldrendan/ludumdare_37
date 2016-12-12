@@ -73,7 +73,7 @@ public class ShopManager : MonoBehaviour {
 		Debug.Log ("Ordering 1 Product: " + product.Name);
 		if (CurrentOrder == null || CurrentOrder.Count == 0) {
 			CurrentOrder = new List<ProductStock> ();
-			GameEventScheduler.instance.ScheduleGameEvent (new OrderDeliveryEvent(TimeSpan.FromSeconds(3)));
+			GameEventScheduler.instance.ScheduleGameEvent (new OrderDeliveryEvent(new GameTimeSpan(0,2)));
 		}
 		if (GetCartPrice () + product.Cost <= GameMaster.instance.Money) {
 			ProductStock order = CurrentOrder.Find ((x) => x.Product == product);
