@@ -51,6 +51,7 @@ public class Character : MonoBehaviour {
     public void Wake()
     {
         _animator.SetBool("isSleeping", false);
+        Resume();
     }
 
     public void Cook()
@@ -76,16 +77,13 @@ public class Character : MonoBehaviour {
     }
 
     public void EnterWashroom()
-    {
-        //transform.position = Points[(int)Locations.Washroom].position;
-        //_animator.SetBool("isWashroom", true);        
+    {      
 		GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void ExitWashroom()
     {
 		GetComponent<SpriteRenderer>().enabled = true;
-        //_animator.SetBool("isWashroom", false);
     }
 
     public void Resume() {
