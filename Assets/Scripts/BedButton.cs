@@ -18,7 +18,7 @@ public class BedButton : MonoBehaviour {
 		contextMenu.SetActive(false);
 		GameMaster.instance.ClearContext();
         GameMaster.instance.Chara.GetComponent<Character>().Sleep();
-        GameEventScheduler.instance.ScheduleGameEvent(new OnSleepEvent(TimeSpan.FromSeconds(5)));
+		GameEventScheduler.instance.ScheduleGameEvent(new OnSleepEvent(new GameTimeSpan(0,3)));
     }
 
 	public void MakeBed()
