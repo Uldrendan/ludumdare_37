@@ -32,12 +32,17 @@ public class ShowerAction : Action
 
 	public override void Enter ()
 	{
+		Debug.Log ("SHOWER");
 		Character.instance.EnterWashroom ();
+		Washroom.instance.ShutDoor ();
+		Washroom.instance.ShowerOn ();
 	}
 
 	public override void Exit ()
 	{
+		Debug.Log ("SHOWER END");
 		Character.instance.ExitWashroom ();
+		Washroom.instance.ShowerOff ();
 	}
 
 	public override void Do()
@@ -66,11 +71,14 @@ public class BrushTeethAction : Action
 	{
 		startingHygiene = GameMaster.instance.Hygiene;
 		Character.instance.EnterWashroom ();
+		Washroom.instance.SinkOn ();
+		Washroom.instance.ShutDoor ();
 	}
 
 	public override void Exit ()
 	{
 		Character.instance.ExitWashroom ();
+		Washroom.instance.SinkOff ();
 	}
 
 	public override void Do()
@@ -84,7 +92,7 @@ public class BrushTeethAction : Action
 
 	public override bool ExitCriteria()
 	{
-		if (GameMaster.instance.Hygiene >= (Mathf.Max(100,startingHygiene+20)))
+		if (GameMaster.instance.Hygiene >= (Mathf.Min(100,startingHygiene+20)))
 			return true;
 		return false;
 	}
@@ -95,11 +103,13 @@ public class ToiletAction : Action
 	public override void Enter ()
 	{
 		Character.instance.EnterWashroom ();
+		Washroom.instance.ShutDoor ();
 	}
 
 	public override void Exit ()
 	{
 		Character.instance.ExitWashroom ();
+		Washroom.instance.FlushToilet ();
 	}
 
 	public override void Do()

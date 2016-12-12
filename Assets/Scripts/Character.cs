@@ -77,13 +77,15 @@ public class Character : MonoBehaviour {
 
     public void EnterWashroom()
     {
-        transform.position = Points[(int)Locations.Washroom].position;
-        _animator.SetBool("isWashroom", true);        
+        //transform.position = Points[(int)Locations.Washroom].position;
+        //_animator.SetBool("isWashroom", true);        
+		GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void ExitWashroom()
     {
-        _animator.SetBool("isWashroom", false);
+		GetComponent<SpriteRenderer>().enabled = true;
+        //_animator.SetBool("isWashroom", false);
     }
 
     public void Resume() {

@@ -38,7 +38,10 @@ public class GameMaster : MonoBehaviour
 	bool paused; //to pause the update loop functions (for game over or possible pause menu)
 
 	public Action defaultAction;
-	public Action currentAction;
+	private Action _currentAction;
+	public Action currentAction {
+		get { return _currentAction; } set { _currentAction = value; _currentAction.Enter (); }
+	}
 	public string currentActivity;
 
 	void Start () {
@@ -89,7 +92,7 @@ public class GameMaster : MonoBehaviour
 					                                     "You are mistaken for a bear and released into the forest. You lose...", true);
 				else if(bathroom <= 0)
 					GameMessage.instance.PostGameMessage("You've had an unfortunate accident. You leave the house to purchase new pants " +
-					                                     "where you die from embarassment. You lose...", true);
+					                                     "and promptly die of embarassment. You lose...", true);
 			}
 			ManageActions();
 			HandleTimer();
