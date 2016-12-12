@@ -56,7 +56,7 @@ public class ShowerAction : Action
 
 	public override bool ExitCriteria()
 	{
-		if (timer >= 3 || GameMaster.instance.Hygiene == 100)
+		if (timer >= 3 || GameMaster.instance.Hygiene >= 100)
 			return true;
 		return false;
 	}
@@ -132,7 +132,8 @@ public class WorkAction : Action
 {
 	public override void Do()
 	{
-		GameMaster.instance.Money += Time.deltaTime * OVERALL_MODIFIER * MONEY_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
+		GameMaster.instance.Money += 5;
+
 		GameMaster.instance.Hygiene -= Time.deltaTime * OVERALL_MODIFIER * HYGIENE_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
 		GameMaster.instance.Energy -= Time.deltaTime * OVERALL_MODIFIER * ENERGY_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
 		GameMaster.instance.Hunger -= Time.deltaTime * OVERALL_MODIFIER * HUNGER_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
