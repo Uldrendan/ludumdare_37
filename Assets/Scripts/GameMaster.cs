@@ -59,10 +59,13 @@ public class GameMaster : MonoBehaviour
 			if (currentAction is PlayAction)
 			{
 				Character.instance.Play();
+				defaultAction = ScriptableObject.CreateInstance<PlayAction>();
 			}
 			if (currentAction is WorkAction)
 			{
 				Character.instance.Work();
+				defaultAction = ScriptableObject.CreateInstance<WorkAction>();
+
 			}
 
 			if (progress >= 100)
@@ -171,6 +174,7 @@ public class GameMaster : MonoBehaviour
 	public void ManageActions()
 	{
 		currentAction.Do();
+		Debug.Log ("Current Action: " + currentAction.GetType () + ", " + currentAction.ExitCriteria ());
 		if (currentAction.ExitCriteria())
 		{
 			currentAction.Exit();
