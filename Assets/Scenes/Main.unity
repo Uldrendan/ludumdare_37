@@ -292,6 +292,69 @@ Transform:
   m_PrefabParentObject: {fileID: 4417316116419890, guid: 985edf93b142222469395d530de8779a,
     type: 2}
   m_PrefabInternal: {fileID: 1082943173}
+--- !u!1 &195685892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 195685893}
+  - component: {fileID: 195685894}
+  m_Layer: 0
+  m_Name: Microwave_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &195685893
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 195685892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.08, y: 0.04, z: -0.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 700481030}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &195685894
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 195685892}
+  m_Enabled: 1
+  serializedVersion: 7
+  m_Type: 2
+  m_Color: {r: 0, g: 1, b: 0.21379304, a: 1}
+  m_Intensity: 0.8
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &245903415
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +560,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1532179588293962, guid: 9bd22c11f0a474650bf50eaa744b7837, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198935885981622202, guid: 9bd22c11f0a474650bf50eaa744b7837,
         type: 2}
@@ -1092,6 +1155,11 @@ Transform:
 --- !u!4 &700481029 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4631631634411862, guid: 95ea68f2a61448c46a27a20dfa9340e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 700481027}
+--- !u!4 &700481030 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4028102514582520, guid: 95ea68f2a61448c46a27a20dfa9340e4,
     type: 2}
   m_PrefabInternal: {fileID: 700481027}
 --- !u!1 &747857650 stripped
