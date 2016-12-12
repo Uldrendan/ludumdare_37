@@ -24,18 +24,15 @@ public class Character : MonoBehaviour {
 
     public void Idle()
     {
-        this.transform.position = Points[(int)Locations.Desk].position;
         _animator.SetInteger("computerMode", 0);        
     }
 
     public void Play()
-    {
-        this.transform.position = Points[(int)Locations.Desk].position;
+    {        
         _animator.SetInteger("computerMode", 1);
     }
 
     public void Work() {
-        this.transform.position = Points[(int)Locations.Desk].position;
         _animator.SetInteger("computerMode", 2);
     }
 
@@ -84,6 +81,7 @@ public class Character : MonoBehaviour {
 
     public void Resume() {
         // resumes last at-desk state
+        this.transform.position = Points[(int)Locations.Desk].position;
         if (GameMaster.instance.currentActivity == "Play")
             Play();
         else if (GameMaster.instance.currentActivity == "Work")
