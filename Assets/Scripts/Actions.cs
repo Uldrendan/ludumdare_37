@@ -183,7 +183,7 @@ public class PlayAction : Action
 
 	public override void Do()
 	{
-		GameMaster.instance.Progress += Time.deltaTime * OVERALL_MODIFIER * PROGRESS_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
+		GameMaster.instance.Progress += 2*(Time.deltaTime * OVERALL_MODIFIER * PROGRESS_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR);
 		GameMaster.instance.Hygiene -= Time.deltaTime * OVERALL_MODIFIER * HYGIENE_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
 		GameMaster.instance.Energy -= Time.deltaTime * OVERALL_MODIFIER * ENERGY_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
 		GameMaster.instance.Hunger -= Time.deltaTime * OVERALL_MODIFIER * HUNGER_MODIFIER / GameMaster.REALTIMESECONDS_PER_HOUR;
