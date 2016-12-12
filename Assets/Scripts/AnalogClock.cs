@@ -23,7 +23,7 @@ public class AnalogClock : Interactable {
 			ClockHand.transform.localRotation = Quaternion.Euler (0, 90 - rotation, -90);
 			// this is pretty shitty, dkm
 			_audioSource.volume = 0.1f;
-			_audioSource.pitch = 1;
+			_audioSource.pitch = Random.Range(0.8f,1.2f);
 			_audioSource.Play();
 		}
 
@@ -32,7 +32,7 @@ public class AnalogClock : Interactable {
 
 	public override void OnClick() {
 		_audioSource.volume = 0.05f;
-		_audioSource.pitch = 3;
+		_audioSource.pitch = Random.Range(2.5f,3.5f);
 		_audioSource.Play();
 	}
 }

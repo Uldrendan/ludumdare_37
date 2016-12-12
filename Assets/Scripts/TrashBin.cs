@@ -15,6 +15,7 @@ public class TrashBin : Interactable {
 	}
 
 	public override void OnClick () {
+		_audioSource.pitch = Random.Range (0.8f, 1.2f);
 		_audioSource.Play ();
 		CurrentCoroutine = Wiggle ();
 	}

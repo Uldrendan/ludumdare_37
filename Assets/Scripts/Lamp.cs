@@ -23,6 +23,7 @@ public class Lamp : Interactable {
 	}
 
 	public override void OnClick () {
+		_audioSource.pitch = Random.Range (0.8f,1.2f);
 		_audioSource.Play ();
         IsLightOn = !IsLightOn;
         AdjustLight();
