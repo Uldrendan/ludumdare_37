@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorkspaceContextMenu : MonoBehaviour {
+public class WashroomContextMenu : MonoBehaviour {
 
 	public GameObject ShowerButton_GO;
 	public GameObject BrushTeethButton_GO;
@@ -14,12 +14,12 @@ public class WorkspaceContextMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		ShowerButton = PlayButton_GO.GetComponent<DoActionButton>();
-		ShowerButton.SetAction(ScriptableObject.CreateInstance<PlayAction>());
-		BrushTeethButton = WorkButton_GO.GetComponent<DoActionButton>();
-		BrushTeethButton.SetAction(ScriptableObject.CreateInstance<WorkAction>());
-		ToiletButton = ShopButton_GO.GetComponent<ShopButton>();
-		ToiletButton.SetAction(ScriptableObject.CreateInstance<WorkAction>());
+		ShowerButton = ShowerButton_GO.GetComponent<DoActionButton>();
+		ShowerButton.SetAction(ScriptableObject.CreateInstance<ShowerAction>());
+		BrushTeethButton = BrushTeethButton_GO.GetComponent<DoActionButton>();
+		BrushTeethButton.SetAction(ScriptableObject.CreateInstance<BrushTeethAction>());
+		ToiletButton = ToiletButton_GO.GetComponent<DoActionButton>();
+		ToiletButton.SetAction(ScriptableObject.CreateInstance<ToiletAction>());
 	}
 	
 	// Update is called once per frame
