@@ -3354,7 +3354,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
+  m_DynamicPixelsPerUnit: 5
 --- !u!223 &840663945
 Canvas:
   m_ObjectHideFlags: 0
@@ -4230,6 +4230,16 @@ Prefab:
       value: 
       objectReference: {fileID: 12800000, guid: 2f454053fa0954984bdf9bdff310d4e8,
         type: 3}
+    - target: {fileID: 114250536084757856, guid: 30f04587ceb6943c2a57d4ce408a4d50,
+        type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114250536084757856, guid: 30f04587ceb6943c2a57d4ce408a4d50,
+        type: 2}
+      propertyPath: m_FontData.m_RichText
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30f04587ceb6943c2a57d4ce408a4d50, type: 2}
   m_IsPrefabParent: 0
@@ -5000,7 +5010,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
+  m_DynamicPixelsPerUnit: 5
 --- !u!223 &1337697031
 Canvas:
   m_ObjectHideFlags: 0
@@ -5584,7 +5594,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
+  m_DynamicPixelsPerUnit: 5
 --- !u!223 &1489469321
 Canvas:
   m_ObjectHideFlags: 0
@@ -8996,7 +9006,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
+  m_DynamicPixelsPerUnit: 5
 --- !u!114 &1692589457
 MonoBehaviour:
   m_ObjectHideFlags: 0
