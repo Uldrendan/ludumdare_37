@@ -13,7 +13,7 @@ public class ShopItem : Button {
 
 	public void Start () {
 		Setup ();
-		onClick.AddListener (() => ShopManager.instance.OrderProduct(Product));
+		onClick.AddListener (() => OrderProduct());
 	}
 
 	public void SetProduct(Product product) {
@@ -22,6 +22,10 @@ public class ShopItem : Button {
 		Description.text = Product.Description;
 		Cost.text = "$" + Product.Cost;
 		Icon.sprite = Product.Icon;
+	}
+
+	void OrderProduct() {
+		ShopManager.instance.OrderProduct (Product);
 	}
 
 	public void Setup() {

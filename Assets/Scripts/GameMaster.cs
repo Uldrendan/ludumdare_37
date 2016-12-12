@@ -31,6 +31,7 @@ public class GameMaster : MonoBehaviour
 
 	public List<ProductStock> Inventory;
 
+	AudioSource _audioSource;
 	public string currentActivity;
 
 	public GameObject currentContext;
@@ -53,6 +54,7 @@ public class GameMaster : MonoBehaviour
 	}
 
 	void Start () {
+		_audioSource = GetComponent<AudioSource> ();
 		defaultAction = ScriptableObject.CreateInstance<IdleAction>();
 		currentAction = defaultAction;
 		Time.timeScale = 1;
@@ -147,6 +149,7 @@ public class GameMaster : MonoBehaviour
 
 	void CheckClick () {
 		if (Input.GetMouseButtonDown (0)) {
+			_audioSource.Play ();
 			if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
 			{
 				Debug.Log("Selecting context menu option");

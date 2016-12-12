@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour {
 
 	public static ShopManager instance;
+	private AudioSource _audioSource;
 
 	public List<ShopItem> Stock;
 	public List<ProductStock> CurrentOrder;
@@ -16,6 +17,9 @@ public class ShopManager : MonoBehaviour {
 	public GameObject CartItem_GO;
 	public GameObject ShopContent;
 	public GameObject CartContent;
+
+	public AudioClip Cancel;
+	public AudioClip Kaching;
 
 	public GameObject CartCost;
 	private Text _costText;
@@ -28,13 +32,22 @@ public class ShopManager : MonoBehaviour {
 		instance = this;
 
 
+		_audioSource = GetComponent<AudioSource> ();
 		_costText = CartCost.GetComponent<Text> ();
 		Stock = new List<ShopItem> ();
 		CurrentOrder = new List<ProductStock> ();
 		AddProduct (SaladProduct.CreateInstance<SaladProduct>());
 		AddProduct (ColdPizzaProduct.CreateInstance<ColdPizzaProduct>());
 		AddProduct (HotPocketsProduct.CreateInstance<HotPocketsProduct>());
-		AddProduct (EnergyDrinkProduct.CreateInstance<EnergyDrinkProduct>());
+	}
+
+	public void KachingNoise() {
+		_audioSource.Play ();
+	}
+
+	public void BadNoise() {
+		_audioSource.clip = Cancel;
+		_audioSource.Play ();
 	}
 
 	public void SetAmazonActive(bool active) {
@@ -80,6 +93,7 @@ public class ShopManager : MonoBehaviour {
 			GameEventScheduler.instance.ScheduleGameEvent (new OrderDeliveryEvent(new GameTimeSpan(0,2)));
 		}
 		if (GetCartPrice () + product.Cost <= GameMaster.instance.Money) {
+			KachingNoise ();
 			ProductStock order = CurrentOrder.Find ((x) => x.Product == product);
 			if (order != null) {
 				order.Num++;
@@ -92,6 +106,7 @@ public class ShopManager : MonoBehaviour {
 				cartItem.SetProductStock (stock);
 			}
 		} else {
+			BadNoise ();
 			Debug.Log ("Not Enough Dough");
 		}
 	}

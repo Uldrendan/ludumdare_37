@@ -142,6 +142,7 @@ public class WorkAction : Action
 	{
 		startTime = GameMaster.instance.currentTime;
 		Workspace.instance.StartTyping ();
+		Workspace.instance.StartupSound ();
 	}
 
 	public override void Exit ()
@@ -174,6 +175,7 @@ public class PlayAction : Action
 	public override void Enter ()
 	{
 		Workspace.instance.StartMashing ();
+		Workspace.instance.StartupSound ();
 	}
 
 	public override void Exit ()
