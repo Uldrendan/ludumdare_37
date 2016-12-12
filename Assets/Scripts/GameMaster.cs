@@ -73,7 +73,6 @@ public class GameMaster : MonoBehaviour
 			{
 				paused = true;
 				Time.timeScale = 0;
-				GameMessage.instance.gameObject.SetActive(true);
 				GameMessage.instance.PostGameMessage("You win!", true);
 			}
 
@@ -81,8 +80,16 @@ public class GameMaster : MonoBehaviour
 			{
 				paused = true;
 				Time.timeScale = 0;
-				GameMessage.instance.gameObject.SetActive(true);
-				GameMessage.instance.PostGameMessage("You lose...", true);
+				if(energy <= 0)
+					GameMessage.instance.PostGameMessage("After your marathon gaming session you fall into an energy drink fueled coma. You lose...", true);
+				else if(hygiene <= 0)
+					GameMessage.instance.PostGameMessage("The filth that was once your ally has turned against you. You lose...", true);
+				else if(hunger <= 0)
+					GameMessage.instance.PostGameMessage("In a hunger induced rage you leave the house to scavenge. " +
+					                                     "You are mistaken for a bear and released into the forest. You lose...", true);
+				else if(bathroom <= 0)
+					GameMessage.instance.PostGameMessage("You've had an unfortunate accident. You leave the house to purchase new pants " +
+					                                     "where you die from embarassment. You lose...", true);
 			}
 
 			HandleTimer();

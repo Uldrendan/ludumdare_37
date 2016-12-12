@@ -237,4 +237,20 @@ public class GameTimeSpan {
 	public static GameTimeSpan Zero () {
 		return new GameTimeSpan (0, 0);
 	}
+{
+    public OnSleepEvent() : base() { }
+    public OnSleepEvent(TimeSpan timeUntilEvent) : base (timeUntilEvent, TimeSpan.Zero) { }
+    public OnSleepEvent(DateTime startTime, DateTime endTime) : base(startTime, endTime) { }
+    public OnSleepEvent(TimeSpan timeUntilEvent, TimeSpan eventLength) : base(timeUntilEvent, eventLength) { }
+
+    public override void Do()
+    {
+        Debug.Log("Sleeping...");
+    }
+    public override void Exit()
+    {
+        Debug.Log("Waking up!");
+        GameMaster.instance.Chara.GetComponent<Character>().Wake();
+        GameMaster.instance.Chara.GetComponent<Character>().Resume();
+    }
 }
