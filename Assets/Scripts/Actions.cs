@@ -57,8 +57,10 @@ public class ShowerAction : Action
 
 	public override bool ExitCriteria()
 	{
-		if (timer >= 3 || GameMaster.instance.Hygiene >= 100)
+		if (timer >= 3 || GameMaster.instance.Hygiene >= 100) {
+			timer = 0;
 			return true;
+		}
 		return false;
 	}
 }
